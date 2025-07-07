@@ -1,6 +1,7 @@
 import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -29,7 +30,7 @@ public class Main {
                     addTasks(tasks);
                     break;
                 case 3:
-                    System.out.println("This is the remove task menu");
+                    removeTask(tasks);
                     break;
                 case 4:
                     System.out.println("Existing the program");
@@ -49,11 +50,35 @@ public class Main {
         }
     }
 
-    public static void addTasks(List<String> tasks){
-        System.out.print("Enter your task to add: ");
+    public static void addTasks(List<String> tasks) {
         Scanner scan = new Scanner(System.in);
-        String task = scan.nextLine();
-        tasks.add(task);
-        System.out.println("Task added successfully !");
+        System.out.println("Type 'back' to go back");
+        String task = "";
+        while (!task.equals("back")){
+            System.out.print("Enter the task: ");
+            task = scan.nextLine();
+            if (!task.equals("back")) {
+                tasks.add(task);
+                System.out.println("Task added successfully !");
+            }
+        }
+    }
+
+    public static void removeTask(List<String> tasks) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter 0 to view tasks list");
+        System.out.print("Enter the task number: ");
+        int option = scan.nextInt();
+
+        if (option == 0) {
+            viewTasks(tasks);
+            removeTask(tasks);
+        }
+        else if (option > 0 && option < tasks.size()) {
+            tasks.remove(option - 1);
+        }
+        else {
+            System.out.println("Invalid option");
+        }
     }
 }
