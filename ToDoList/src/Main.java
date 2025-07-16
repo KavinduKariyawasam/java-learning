@@ -13,11 +13,13 @@ public class Main {
         List<String> tasks = new ArrayList<>();
 
         do {
+            System.out.println("\n----------------------");
             System.out.print("\nToDo List \n");
             System.out.println("1. View Tasks");
             System.out.println("2. Add Task");
             System.out.println("3. Remove Task");
             System.out.println("4. Exit");
+            System.out.println("----------------------\n");
 
             System.out.print("Enter your Choice: ");
             choice = scanner.nextInt();
@@ -44,30 +46,39 @@ public class Main {
         if (tasks.isEmpty()){
             System.out.println("There are no tasks.");
         } else {
+            System.out.println("\n----------------------");
+            System.out.println("Your tasks are HERE:");
+            System.out.println("----------------------");
             for (int i = 0; i < tasks.size(); i++){
                 System.out.println((i+1) + " " + tasks.get(i));
             }
+            System.out.println("----------------------\n");
         }
     }
 
     public static void addTasks(List<String> tasks) {
         Scanner scan = new Scanner(System.in);
+        System.out.println("\n----------------------");
         System.out.println("Type 'back' to go back");
+        System.out.println("----------------------");
         String task = "";
         while (!task.equals("back")){
-            System.out.print("Enter the task: ");
+            System.out.print("Enter the task to add: ");
             task = scan.nextLine();
             if (!task.equals("back")) {
                 tasks.add(task);
                 System.out.println("Task added successfully !");
             }
         }
+        System.out.println("----------------------\n");
     }
 
     public static void removeTask(List<String> tasks) {
         Scanner scan = new Scanner(System.in);
+        System.out.println("\n----------------------");
         System.out.println("Enter 0 to view tasks list");
-        System.out.print("Enter the task number: ");
+        System.out.println("----------------------");
+        System.out.print("Enter the task number to remove: ");
         int option = scan.nextInt();
 
         if (option == 0) {
@@ -79,6 +90,7 @@ public class Main {
         }
         else {
             System.out.println("Invalid option");
+            System.out.println("----------------------\n");
         }
     }
 }
